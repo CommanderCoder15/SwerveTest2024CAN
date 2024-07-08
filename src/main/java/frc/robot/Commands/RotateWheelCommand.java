@@ -28,10 +28,10 @@ public class RotateWheelCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.print("FL: "); System.out.print(rotateWheel.getFLvalue());
-    System.out.print("FR: "); System.out.print(rotateWheel.getFRvalue());
-    System.out.print("BL: "); System.out.print(rotateWheel.getBLvalue());
-    System.out.print("BR: "); System.out.print(rotateWheel.getBRvalue());
+    System.out.print("FL: "); System.out.println(rotateWheel.getFLvalue());
+    System.out.print("FR: "); System.out.println(rotateWheel.getFRvalue());
+    System.out.print("BL: "); System.out.println(rotateWheel.getBLvalue());
+    System.out.print("BR: "); System.out.println(rotateWheel.getBRvalue());
   }
 
   // Called once the command ends or is interrupted.
