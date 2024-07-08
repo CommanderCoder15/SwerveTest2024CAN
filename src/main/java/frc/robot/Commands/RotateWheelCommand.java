@@ -12,6 +12,7 @@ public class RotateWheelCommand extends Command {
   /** Creates a new RotateWheelCommand. */
   RotateWheelSubsystem rotateWheel;
   XboxController control;
+  int num;
 
   public RotateWheelCommand(RotateWheelSubsystem rotateWheel, XboxController control) {
     this.rotateWheel = rotateWheel;
@@ -23,15 +24,20 @@ public class RotateWheelCommand extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    num = 0;
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.print("FL: "); System.out.println(rotateWheel.getFLvalue());
-    System.out.print("FR: "); System.out.println(rotateWheel.getFRvalue());
-    System.out.print("BL: "); System.out.println(rotateWheel.getBLvalue());
-    System.out.print("BR: "); System.out.println(rotateWheel.getBRvalue());
+    num++;
+    if (num > 9) {
+      System.out.print("FL: "); System.out.println(rotateWheel.getFLvalue());
+      System.out.print("FR: "); System.out.println(rotateWheel.getFRvalue());
+      System.out.print("BL: "); System.out.println(rotateWheel.getBLvalue());
+      System.out.print("BR: "); System.out.println(rotateWheel.getBRvalue());
+    } 
   }
 
   // Called once the command ends or is interrupted.
