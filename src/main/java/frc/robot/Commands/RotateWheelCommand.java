@@ -12,7 +12,15 @@ public class RotateWheelCommand extends Command {
   /** Creates a new RotateWheelCommand. */
   RotateWheelSubsystem rotateWheel;
   XboxController control;
-  int num;
+  double FLmin;
+  double FRmin;
+  double BRmin;
+  double BLmin;
+
+  double FLmax;
+  double FRmax;
+  double BRmax;
+  double BLmax;
 
   public RotateWheelCommand(RotateWheelSubsystem rotateWheel, XboxController control) {
     this.rotateWheel = rotateWheel;
@@ -25,19 +33,65 @@ public class RotateWheelCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    num = 0;
+    FLmin = 1;
+    FRmin = 1;
+    BLmin = 1;
+    BRmin = 1;
+
+    FLmax = 0;
+    FRmax = 0;
+    BLmax = 0;
+    BRmax = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    num++;
-    if (num > 9) {
-      System.out.print("FL: "); System.out.println(rotateWheel.getFLvalue());
-      System.out.print("FR: "); System.out.println(rotateWheel.getFRvalue());
-      System.out.print("BL: "); System.out.println(rotateWheel.getBLvalue());
-      System.out.print("BR: "); System.out.println(rotateWheel.getBRvalue());
-    } 
+    if (rotateWheel.getFLvalue() < FLmin) {
+      FLmin = rotateWheel.getFLvalue();
+      System.out.print("FL min: "); System.out.println(FLmin);
+    }
+    if (rotateWheel.getFRvalue() < FRmin) {
+      FRmin = rotateWheel.getFRvalue();
+      System.out.print("FR min: "); System.out.println(FRmin);
+    }
+    if (rotateWheel.getBLvalue() < BLmin) {
+      BLmin = rotateWheel.getBLvalue();
+      System.out.print("BL min: "); System.out.println(BLmin);
+    }
+    if (rotateWheel.getBRvalue() < BRmin) {
+      BRmin = rotateWheel.getBRvalue();
+      System.out.print("BR min: "); System.out.println(BRmin);
+    }
+
+    if (rotateWheel.getFLvalue() > FLmax) {
+      FLmax = rotateWheel.getFLvalue();
+      System.out.print("FL max: "); System.out.println(FLmax);
+    }
+    if (rotateWheel.getFRvalue() > FRmax) {
+      FRmax = rotateWheel.getFRvalue();
+      System.out.print("FR max: "); System.out.println(FRmax);
+    }
+    if (rotateWheel.getBLvalue() > BLmax) {
+      BLmax = rotateWheel.getBLvalue();
+      System.out.print("BL max: "); System.out.println(BLmax);
+    }
+    if (rotateWheel.getBRvalue() > BRmax) {
+      BRmax = rotateWheel.getBRvalue();
+      System.out.print("BR max: "); System.out.println(BRmax);
+    }
+    
+    if (control.getAButton()) {
+      System.out.print("FL min: "); System.out.println(FLmin);
+      System.out.print("FR min: "); System.out.println(FRmin);
+      System.out.print("BL min: "); System.out.println(BLmin);
+      System.out.print("BR min: "); System.out.println(BRmin);
+
+      System.out.print("FL max: "); System.out.println(FLmax);
+      System.out.print("FR max: "); System.out.println(FRmax);
+      System.out.print("BL max: "); System.out.println(BLmax);
+      System.out.print("BR max: "); System.out.println(BRmax);
+    }
   }
 
   // Called once the command ends or is interrupted.
