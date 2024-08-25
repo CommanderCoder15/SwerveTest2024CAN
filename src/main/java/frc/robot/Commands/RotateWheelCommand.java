@@ -15,17 +15,17 @@ public class RotateWheelCommand extends Command {
   XboxController control;
   MathR math;
   
-  final double FLmin = 0.2039; // motor minimum constants
+  final double FLmin = 0.2039; // encoder minimum constants
   final double FRmin = 0.0150;
   final double BRmin = 0.0864;
   final double BLmin = 0.0267;
 
-  final double FLmax = 3.3267; // motor maximum constants
+  final double FLmax = 3.3267; // encoder maximum constants
   final double FRmax = 3.247;
   final double BRmax = 2.96;
   final double BLmax = 3.229;
 
-  final double FLcntr = 1.6; // motor center constants (points toward center of the robot)
+  final double FLcntr = 1.6; // encoder center constants (points toward center of the robot)
   final double FRcntr = 1.7;
   final double BRcntr = 0.091;
   final double BLcntr = 3.01;
@@ -49,13 +49,6 @@ public class RotateWheelCommand extends Command {
   boolean FRDegFlip;
   boolean BRDegFlip;
   boolean BLDegFlip;
-
-  // FUNCTIONality
-  private double formatRadiansToDegrees(double radians, double minRad, double maxRad) { // Ummmmm...... format.... yeah.... idk how to explain...
-    double degrees = MathR.lerp(0, 360, radians, minRad, maxRad);
-    
-    return degrees;
-  }
 
   // WPIlib stuff (where the code actually runs)
   public RotateWheelCommand(RotateWheelSubsystem rotateWheel, XboxController control) {
@@ -85,24 +78,7 @@ public class RotateWheelCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    FLcurrentDeg = formatRadiansToDegrees(rotateWheel.getFLvalue(), FLmin, FLmax);
 
-    // flip query
-    // detects whether optimal aiming passes through 0/360. If so, change from degrees from 0 to 360 to degrees from -180 to 180
-    if(FLaimDeg - FLcurrentDeg >= 180){
-      FLaimDeg -= 180; FLcurrentDeg -= 180;
-      FLDegFlip = true;
-      FLDegDiff = FLaimDeg - FLcurrentDeg;
-    }
-
-    // calculations and actions
-
-    // revert flip
-    if(FLDegFlip){
-      FLaimDeg += 180;
-      FLcurrentDeg += 180;
-      FLDegFlip = false;
-    }
 
     /* Code to find encoder values (execution)
     if(control.getRightBumper() - control.getLeftBumper()) { // turn wheels
