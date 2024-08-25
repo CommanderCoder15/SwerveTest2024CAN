@@ -24,29 +24,29 @@ public class VectorR implements Cloneable {
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 
-    public void setFromCartesian(double x, double y) {
+    public void setFromCartesian(double x, double y) { // sets x and y on the Cartesian plane
         this.x = x;
         this.y = y;
     }
 
-    public VectorR fromCartesian(double x, double y) {
+    public VectorR fromCartesian(double x, double y) { // Create a Cartesian vector?
         VectorR cartVector = new VectorR();
         cartVector.setFromCartesian(x, y);
         return cartVector;
     }
 
-    public void setFromPolar(double magnitude, double angleDegrees) {
+    public void setFromPolar(double magnitude, double angleDegrees) { // sets x and y from the Polar plane
         x = magnitude * Math.cos(Math.toRadians(angleDegrees));
         y = magnitude * Math.sin(Math.toRadians(angleDegrees));
     }
 
-    public static VectorR fromPolar(double magnitude, double angleDegrees) {
+    public static VectorR fromPolar(double magnitude, double angleDegrees) { // Create a Polar vector
         VectorR polarVector = new VectorR();
         polarVector.setFromPolar(magnitude, angleDegrees);
         return polarVector;
     }
 
-    public void setMagnitude(double mag) {
+    public void setMagnitude(double mag) { // sets Cartesian x and y based on magnitude
         setFromPolar(mag, getAngle());
     }
 

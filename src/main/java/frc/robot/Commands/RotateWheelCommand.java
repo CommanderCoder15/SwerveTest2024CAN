@@ -45,11 +45,19 @@ public class RotateWheelCommand extends Command {
   double BRDegDiff;
   double BLDegDiff;
 
-  boolean FLDegFlip; // flips format from 0 to 360 to -180 to 180
+  boolean FLDegFlip; // flips format from 0 to 360 to -180 to 180. Useful to make sure the motor doesn't turn more than 180 degrees when half-optimized
   boolean FRDegFlip;
   boolean BRDegFlip;
   boolean BLDegFlip;
 
+  // FUNCTIONality
+  private double formatRadiansToDegrees(double radians, double minRad, double maxRad) { // Ummmmm...... format.... yeah.... idk how to explain...
+    double degrees = MathR.lerp(0, 360, radians, minRad, maxRad);
+    
+    return degrees;
+  }
+
+  // WPIlib stuff (where the code actually runs)
   public RotateWheelCommand(RotateWheelSubsystem rotateWheel, XboxController control) {
     this.rotateWheel = rotateWheel;
     this.control = control;
@@ -61,7 +69,7 @@ public class RotateWheelCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    /* Code to detect encoder values (initialization)
+    /* // Code to detect encoder values (initialization)
     FLmin = 1;
     FRmin = 1;
     BLmin = 1;
@@ -77,17 +85,19 @@ public class RotateWheelCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // Turn radians into degrees
-    FLcurrentDeg = MathR.lerp(0, 360, FLmin, FLmax, rotateWheel.getFLvalue());
-    FLcurrentDeg = FLcurrentDeg * -1 - 90
+    FLcurrentDeg = formatRadiansToDegrees(rotateWheel.getFLvalue(), FLmin, FLmax);
 
-    FLDegDiff = FLaimDeg - FLcurrentDeg;
-    if(FLDegDiff >= 180){ // detects whether optimal aiming passes through 0/360. If so, change from degrees from 0 to 360 to degrees from -180 to 180
+    // flip query
+    // detects whether optimal aiming passes through 0/360. If so, change from degrees from 0 to 360 to degrees from -180 to 180
+    if(FLaimDeg - FLcurrentDeg >= 180){
       FLaimDeg -= 180; FLcurrentDeg -= 180;
       FLDegFlip = true;
       FLDegDiff = FLaimDeg - FLcurrentDeg;
     }
 
+    // calculations and actions
+
+    // revert flip
     if(FLDegFlip){
       FLaimDeg += 180;
       FLcurrentDeg += 180;
