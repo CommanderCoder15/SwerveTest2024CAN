@@ -6,21 +6,21 @@ package frc.robot.Swerve;
 
 /** Add your docs here. */
 public class SwerveMotor {
-    public final double EncoderMin;
-    public final double EncoderMax;
-    public final double EncoderCntr;
-    public final double AimDeg;
-    public final double CurrentDeg;
-    public final double DegDiff;
-    public final boolean DegFlip;
-    
-    public SwerveMotor(double EncoderMinimum, double EncoderMaximum, double EncoderCenter) {
+	SwerveModuleInfo info;
+    final double EncoderMin;
+    final double EncoderMax;
+    final double EncoderCntr;
+    double AimDeg;
+    double CurrentDeg;
+
+
+    public SwerveMotor(SwerveModuleInfo info, double EncoderMinimum, double EncoderMaximum, double EncoderCenter, double x, double y) {
+		this.info = info;
         this.EncoderMin = EncoderMinimum;
         this.EncoderMax = EncoderMaximum;
         this.EncoderCntr = EncoderCenter;
         this.AimDeg = 0;
         this.CurrentDeg = 0;
-        this.DegDiff = 0;
-        this.DegFlip = false;
+
     }
 }

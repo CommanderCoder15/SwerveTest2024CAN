@@ -54,7 +54,7 @@ public class VectorR implements Cloneable {
         setFromPolar(getMagnitude(), angle);
     }
 
-    public void add(VectorR... vector) {
+    public void add(VectorR... vector) { // Adds vectors to the current vector
         for (var vec : vector) {
             x += vec.x;
             y += vec.y;
@@ -79,7 +79,7 @@ public class VectorR implements Cloneable {
         return fromCartesian(x, y);
     }
 
-    public static VectorR addVectors(VectorR... vectors) {
+    public static VectorR addVectors(VectorR... vectors) { // Adds vectors and makes a new vector by adding specified vectors
         VectorR v3 = new VectorR();
 
         for (VectorR vector : vectors) {
@@ -97,7 +97,7 @@ public class VectorR implements Cloneable {
         return v3;
     }
 
-    public void rotate(double angle) {
+    public void rotate(double angle) { // Rotates a vector by a certain angle
         setAngle(getAngle() + angle);
     }
 
