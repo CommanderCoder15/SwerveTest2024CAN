@@ -8,9 +8,13 @@ package frc.robot.Swerve;
 public class SwerveModuleInfo {
     final int rotationMotorID;
     final int movementMotorID;
+    final double x;
+    final double y;
     
-    public SwerveModuleInfo(int rotationMotorID, int movementMotorID) {
+    public SwerveModuleInfo(int rotationMotorID, int movementMotorID, double x, double y) {
         this.rotationMotorID = rotationMotorID;
         this.movementMotorID = movementMotorID;
+		this.x = x;
+		this.y = y;
     }
 }
