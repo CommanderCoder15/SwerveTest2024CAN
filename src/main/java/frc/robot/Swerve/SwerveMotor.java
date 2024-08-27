@@ -5,13 +5,17 @@
 package frc.robot.Swerve;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.SparkAnalogSensor;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.SparkAnalogSensor.Mode;
 
 /** Add your docs here. */
 public class SwerveMotor {
 	SwerveModuleInfo info;
 	private CANSparkMax lateral;
+    private SparkAnalogSensor absLateralEncoder;
 	private CANSparkMax rotation;
+    private SparkAnalogSensor absRotationEncoder;
     final double EncoderMin;
     final double EncoderMax;
     final double EncoderCntr;
@@ -21,7 +25,9 @@ public class SwerveMotor {
     public SwerveMotor(SwerveModuleInfo info, double EncoderMinimum, double EncoderMaximum, double EncoderCenter) {
 		this.info = info;
 		this.lateral = new CANSparkMax(info.movementMotorID, MotorType.kBrushless);
+        this.absLateralEncoder = this.lateral.getAnalog(Mode.kAbsolute);
 		this.rotation = new CANSparkMax(info.movementMotorID, MotorType.kBrushless);
+        this.absRotationEncoder = this.rotation.getAnalog(Mode.kAbsolute);
 
         this.EncoderMin = EncoderMinimum;
         this.EncoderMax = EncoderMaximum;
