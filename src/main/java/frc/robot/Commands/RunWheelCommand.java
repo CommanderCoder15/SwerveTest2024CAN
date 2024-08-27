@@ -27,7 +27,15 @@ public class RunWheelCommand extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    
+    /* Rotates wheels. Helps make finding encoder values easier.
+    runWheel.runFRmotor(control.getRightTriggerAxis()*0.1);
+    runWheel.runFLmotor(control.getRightTriggerAxis()*0.1);
+    runWheel.runBRmotor(control.getRightTriggerAxis()*0.1);
+    runWheel.runBLmotor(control.getRightTriggerAxis()*0.1);
+    */
+  }
 
   // Called once the command ends or is interrupted.
   @Override

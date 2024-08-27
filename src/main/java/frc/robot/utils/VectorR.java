@@ -24,29 +24,29 @@ public class VectorR implements Cloneable {
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 
-    public void setFromCartesian(double x, double y) {
+    public void setFromCartesian(double x, double y) { // sets x and y on the Cartesian plane
         this.x = x;
         this.y = y;
     }
 
-    public VectorR fromCartesian(double x, double y) {
+    public VectorR fromCartesian(double x, double y) { // Create a Cartesian vector?
         VectorR cartVector = new VectorR();
         cartVector.setFromCartesian(x, y);
         return cartVector;
     }
 
-    public void setFromPolar(double magnitude, double angleDegrees) {
+    public void setFromPolar(double magnitude, double angleDegrees) { // sets x and y from the Polar plane
         x = magnitude * Math.cos(Math.toRadians(angleDegrees));
         y = magnitude * Math.sin(Math.toRadians(angleDegrees));
     }
 
-    public static VectorR fromPolar(double magnitude, double angleDegrees) {
+    public static VectorR fromPolar(double magnitude, double angleDegrees) { // Create a Polar vector
         VectorR polarVector = new VectorR();
         polarVector.setFromPolar(magnitude, angleDegrees);
         return polarVector;
     }
 
-    public void setMagnitude(double mag) {
+    public void setMagnitude(double mag) { // sets Cartesian x and y based on magnitude
         setFromPolar(mag, getAngle());
     }
 
@@ -54,7 +54,7 @@ public class VectorR implements Cloneable {
         setFromPolar(getMagnitude(), angle);
     }
 
-    public void add(VectorR... vector) {
+    public void add(VectorR... vector) { // Adds vectors to the current vector
         for (var vec : vector) {
             x += vec.x;
             y += vec.y;
@@ -79,7 +79,7 @@ public class VectorR implements Cloneable {
         return fromCartesian(x, y);
     }
 
-    public static VectorR addVectors(VectorR... vectors) {
+    public static VectorR addVectors(VectorR... vectors) { // Adds vectors and makes a new vector by adding specified vectors
         VectorR v3 = new VectorR();
 
         for (VectorR vector : vectors) {
@@ -97,7 +97,7 @@ public class VectorR implements Cloneable {
         return v3;
     }
 
-    public void rotate(double angle) {
+    public void rotate(double angle) { // Rotates a vector by a certain angle
         setAngle(getAngle() + angle);
     }
 
