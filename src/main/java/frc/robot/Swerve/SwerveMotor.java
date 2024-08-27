@@ -35,4 +35,14 @@ public class SwerveMotor {
         this.AimDeg = 0;
         this.CurrentDeg = 0;
     }
+
+    /* COMMANDS (for reference)
+     * set() on a motor sets the speed
+     * getPosition() returns the absolute encoder's position
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
 }
