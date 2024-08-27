@@ -17,7 +17,7 @@ public class MathR {
         return modulo((desiredDegrees - currentDegrees) + 180, 360) - 180;
     }
 
-    public static double limit(double input, double min, double max) {
+    public static double limit(double input, double min, double max) { // limits an input to a min and max.
         if (input < min) return min;
         if (input > max) return max;
         return input;
