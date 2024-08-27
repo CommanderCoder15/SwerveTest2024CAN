@@ -29,12 +29,12 @@ public class RunWheelCommand extends Command {
   @Override
   public void execute() {
     
-    /* Rotates wheels. Helps make finding encoder values easier.
+    //Rotates wheels. Helps make finding encoder values easier.
     runWheel.runFRmotor(control.getRightTriggerAxis()*0.1);
     runWheel.runFLmotor(control.getRightTriggerAxis()*0.1);
     runWheel.runBRmotor(control.getRightTriggerAxis()*0.1);
     runWheel.runBLmotor(control.getRightTriggerAxis()*0.1);
-    */
+    
   }
 
   // Called once the command ends or is interrupted.
