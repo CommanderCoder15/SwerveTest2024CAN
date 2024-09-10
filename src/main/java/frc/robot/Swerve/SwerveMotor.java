@@ -13,19 +13,21 @@ import com.revrobotics.SparkAnalogSensor.Mode;
 public class SwerveMotor {
 	SwerveModuleInfo info;
 	private CANSparkMax lateral;
-    private SparkAnalogSensor absLateralEncoder;
+    //private SparkAnalogSensor absLateralEncoder;
 	private CANSparkMax rotation;
     private SparkAnalogSensor absRotationEncoder;
+
     final double EncoderMin;
     final double EncoderMax;
     final double EncoderCntr;
     double AimDeg;
     double CurrentDeg;
+    boolean reverse;
 
     public SwerveMotor(SwerveModuleInfo info, double EncoderMinimum, double EncoderMaximum, double EncoderCenter) {
 		this.info = info;
 		this.lateral = new CANSparkMax(info.movementMotorID, MotorType.kBrushless);
-        this.absLateralEncoder = this.lateral.getAnalog(Mode.kAbsolute);
+        //this.absLateralEncoder = this.lateral.getAnalog(Mode.kAbsolute);
 		this.rotation = new CANSparkMax(info.movementMotorID, MotorType.kBrushless);
         this.absRotationEncoder = this.rotation.getAnalog(Mode.kAbsolute);
 
@@ -34,6 +36,7 @@ public class SwerveMotor {
         this.EncoderCntr = EncoderCenter;
         this.AimDeg = 0;
         this.CurrentDeg = 0;
+        this.reverse = false;
     }
 
     /* COMMANDS (for reference)
