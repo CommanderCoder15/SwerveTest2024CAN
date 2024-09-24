@@ -7,12 +7,15 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.Swerve.SwerveCommand;
+import frc.robot.Swerve.SwerveSubsystem;
 
 public class RobotContainer {
 
   // Subsystems here
   //private final RotateWheelSubsystem rotateWheel = new RotateWheelSubsystem();
   //private final RunWheelSubsystem runWheel = new RunWheelSubsystem();
+  private final SwerveSubsystem swerve = new SwerveSubsystem();
 
   // Controller
 
@@ -22,6 +25,7 @@ public class RobotContainer {
     // Commands here
     //rotateWheel.setDefaultCommand(new RotateWheelCommand(rotateWheel, control));
     //runWheel.setDefaultCommand(new RunWheelCommand(runWheel, control));
+    swerve.setDefaultCommand(new SwerveCommand(swerve, control));
 
     configureBindings();
   }

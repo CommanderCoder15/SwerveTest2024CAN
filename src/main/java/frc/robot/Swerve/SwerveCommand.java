@@ -4,12 +4,24 @@
 
 package frc.robot.Swerve;
 
+import java.util.Vector;
+
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.utils.VectorR;
 
 public class SwerveCommand extends Command {
   /** Creates a new SwerveCommand. */
-  public SwerveCommand() {
+
+  XboxController control;
+  SwerveSubsystem swerve = new SwerveSubsystem();
+  VectorR vector = new VectorR();
+
+  public SwerveCommand(SwerveSubsystem swerveIN, XboxController controlIN) {
+    this.swerve = swerveIN;
+    this.control = controlIN;
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(swerveIN);
   }
 
   // Called when the command is initially scheduled.
