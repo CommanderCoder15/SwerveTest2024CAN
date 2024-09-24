@@ -62,7 +62,7 @@ public class RotateWheelCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    /* // Code to detect encoder values (initialization)
+     // Code to detect encoder values (initialization)
     FLmin = 1;
     FRmin = 1;
     BLmin = 1;
@@ -72,7 +72,7 @@ public class RotateWheelCommand extends Command {
     FRmax = 0;
     BLmax = 0;
     BRmax = 0;
-    */
+    //
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -80,7 +80,7 @@ public class RotateWheelCommand extends Command {
   public void execute() {
 
 
-    /* Code to find encoder values (execution)
+    // Code to find encoder values (execution)
     if(control.getRightBumper() - control.getLeftBumper()) { // turn wheels
       rotateWheel.rotateFLWheel(0.05);
       rotateWheel.rotateFRWheel(0.05);
@@ -138,7 +138,7 @@ public class RotateWheelCommand extends Command {
       System.out.print("BR max: "); System.out.println(BRmax);
       
     }
-    */
+    //
   }
 
   // Called once the command ends or is interrupted.
