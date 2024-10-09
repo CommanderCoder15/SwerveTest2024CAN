@@ -15,6 +15,7 @@ public class RotateWheelCommand extends Command {
   XboxController control;
   MathR math;
   
+  /*
   final double FLmin = 0.2039; // encoder minimum constants
   final double FRmin = 0.0150;
   final double BRmin = 0.0864;
@@ -49,6 +50,7 @@ public class RotateWheelCommand extends Command {
   boolean FRDegFlip;
   boolean BRDegFlip;
   boolean BLDegFlip;
+  */
 
   // WPIlib stuff (where the code actually runs)
   public RotateWheelCommand(RotateWheelSubsystem rotateWheel, XboxController control) {
